@@ -11,18 +11,29 @@ data_files = {
     "Klebsiella_pneumoniae_aztreonam":{
         "pathogen": "Klebsiella_pneumoniae",
         "antibiotics": "aztreonam",
+        "gene": "*",
         "fold": "https://github.com/hzi-bifo/AMR_benchmarking/raw/refs/heads/main/data/PATRIC/cv_folds/loose/single_S_A_folds/Klebsiella_pneumoniae/aztreonam_random_cv.json",
         "labels": "https://github.com/hzi-bifo/AMR_benchmarking/raw/refs/heads/main/data/PATRIC/meta/loose_by_species/Data_Klebsiella_pneumoniae_aztreonam_pheno.txt",
-        "seq_raw": "https://syncandshare.desy.de/index.php/s/bJD3aHA5iyRr5Xt",
-        "seq_gene": "https://syncandshare.desy.de/index.php/s/qYjdBDRqQtrwNxQ",
+        "seq_raw": "https://syncandshare.desy.de/public.php/dav/files/XgXfASCFeF2jw4M/dlmb_data_Klebsiella_pneumoniae_aztreonam_raw.tar.gz",
+        "seq_gene": "https://syncandshare.desy.de/public.php/dav/files/XgXfASCFeF2jw4M/dlmb_data_Klebsiella_pneumoniae_aztreonam_gene.tar.gz",
     }, 
     "Staphylococcus_aureus_cefoxitin":{
         "pathogen": "Staphylococcus_aureus",
         "antibiotics": "cefoxitin",
+        "gene": "*",
         "fold": "https://github.com/hzi-bifo/AMR_benchmarking/raw/refs/heads/main/data/PATRIC/cv_folds/loose/single_S_A_folds/Staphylococcus_aureus/cefoxitin_random_cv.json",
         "labels": "https://github.com/hzi-bifo/AMR_benchmarking/raw/refs/heads/main/data/PATRIC/meta/loose_by_species/Data_Staphylococcus_aureus_cefoxitin_pheno.txt",
-        "seq_raw": "https://syncandshare.desy.de/index.php/s/BQBoa7dwXxr2NKf",
-        "seq_gene": "https://syncandshare.desy.de/index.php/s/tJdyo2ATiZK7sAi",
+        "seq_raw": "https://syncandshare.desy.de/public.php/dav/files/XgXfASCFeF2jw4M/dlmb_data_Staphylococcus_aureus_cefoxitin_raw.tar.gz",
+        "seq_gene": "https://syncandshare.desy.de/public.php/dav/files/XgXfASCFeF2jw4M/dlmb_data_Staphylococcus_aureus_cefoxitin_gene.tar.gz",
+    },
+    "Staphylococcus_aureus_cefoxitin_pbp4":{
+        "pathogen": "Staphylococcus_aureus",
+        "antibiotics": "cefoxitin",
+        "gene": "pbp4",
+        "fold": "https://github.com/hzi-bifo/AMR_benchmarking/raw/refs/heads/main/data/PATRIC/cv_folds/loose/single_S_A_folds/Staphylococcus_aureus/cefoxitin_random_cv.json",
+        "labels": "https://github.com/hzi-bifo/AMR_benchmarking/raw/refs/heads/main/data/PATRIC/meta/loose_by_species/Data_Staphylococcus_aureus_cefoxitin_pheno.txt",
+        "seq_raw": "https://syncandshare.desy.de/public.php/dav/files/XgXfASCFeF2jw4M/dlmb_data_Staphylococcus_aureus_cefoxitin_gene_pbp4.tar.gz",
+        "seq_gene": "https://syncandshare.desy.de/public.php/dav/files/XgXfASCFeF2jw4M/dlmb_data_Staphylococcus_aureus_cefoxitin_gene_pbp4.tar.gz",
     }
 }
 
@@ -56,7 +67,8 @@ def get_seq_label_fold(pathogen, antibiotics, gene, fold, count):
     return None
 
 def get_seq_label_simple(pathogen, antibiotics, gene):
-    test = get_seq_label_fold(pathogen, antibiotics, gene, 0, 100):
+    test = get_seq_label_fold(pathogen, antibiotics, gene, 0, 100)
+    train = []
     for i in range(1, 10):
         train.extend(get_seq_label_fold(pathogen, antibiotics, gene, i, 20))
 
