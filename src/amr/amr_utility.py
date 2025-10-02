@@ -66,6 +66,15 @@ def get_seq_label_fold(pathogen, antibiotics, gene, fold, count):
     # Load labels
     return None
 
+def get_seq_label_hard(pathogen, antibiotics, gene):
+    test = get_seq_label_fold(pathogen, antibiotics, gene, 0, None)
+    train = []
+    for i in range(1, 10):
+        train.extend(get_seq_label_fold(pathogen, antibiotics, gene, i, None))
+
+    return {"train": train, "test": test}
+
+
 def get_seq_label_simple(pathogen, antibiotics, gene):
     test = get_seq_label_fold(pathogen, antibiotics, gene, 0, 100)
     train = []
